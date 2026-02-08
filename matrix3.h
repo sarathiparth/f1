@@ -20,7 +20,7 @@ class matrix3{
        return r3;
     }
     static matrix3 roty(float radian){
-        float s = std::sin(radian);
+       float s = std::sin(radian);
        float c = std::cos(radian);
        matrix3 r3;
        r3.m[0][0]=c;r3.m[2][0]=-s;
