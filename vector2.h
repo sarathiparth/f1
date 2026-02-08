@@ -89,4 +89,15 @@ public:
     {
         return Vector2(-y, x);
     }
+
+    float angle() const
+    {
+    return std::atan2(y, x);
+    }
+
+    static Vector2 fromAngle(float radians)
+    {
+    return Vector2(std::cos(radians), std::sin(radians));
+    }
+
 };

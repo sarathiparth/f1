@@ -99,4 +99,9 @@ public:
             x * v.y - y * v.x
         );
     }
+    vector3 projectOnto(const vector3& n) const
+    {
+    return n * (dot(n) / n.magnitudesq());
+    }
+
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include <cmath>
+#include <cassert>
 #include "Vector2.h"
 
 namespace MathUtils
@@ -46,4 +47,18 @@ namespace MathUtils
 
         return v;
     }
+    inline float normalizeAngle(float angle)
+    {
+    while (angle > PI)  angle -= TWO_PI;
+    while (angle < -PI) angle += TWO_PI;
+    return angle;
+    }
+    constexpr float GRAVITY = 9.81f;
+    constexpr float DEG_TO_RAD = PI / 180.0f;
+    constexpr float RAD_TO_DEG = 180.0f / PI;
+    inline void assertFinite(float v)
+    {
+     assert(std::isfinite(v));
+    }
+
 }
