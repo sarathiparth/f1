@@ -36,13 +36,13 @@ namespace intg{
         previousPosition = temp;
     }
 
-     inline void rungeKutta4(
+    inline void rungeKutta4(
     vector3& position,
     vector3& velocity,
     const vector3& acceleration,
     float dt
-)
-{
+    )
+    {
     vector3 k1_v = acceleration;
     vector3 k1_x = velocity;
 
@@ -64,7 +64,7 @@ namespace intg{
                + k2_x * 2.0f
                + k3_x * 2.0f
                + k4_x) * (dt / 6.0f);
-}
+    }
 
 template <typename IntegratorFunc>
     inline void substep(
