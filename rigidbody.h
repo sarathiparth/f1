@@ -1,5 +1,5 @@
 #pragma once
-#include "vector2.h"
+#include "vector2d.h"
 #include "integ.h"
 
 class rigid_body
