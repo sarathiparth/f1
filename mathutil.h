@@ -61,4 +61,15 @@ namespace MathUtils
      assert(std::isfinite(v));
     }
 
+    inline Vector2 rotate(const Vector2& v, float angle)
+{
+    float c = std::cos(angle);
+    float s = std::sin(angle);
+
+    return Vector2(
+        v.x * c - v.y * s,
+        v.x * s + v.y * c
+    );
+}
+
 }

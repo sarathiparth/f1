@@ -1,7 +1,6 @@
 #pragma once
 #include "vector2d.h"
 #include "rigidbody.h"
-#include "collision.h"
 #include "constraintSolver.h"
 #include <vector>
 
@@ -9,6 +8,7 @@ class PhysicsWorld
 {
 public:
     std::vector<rigid_body*> bodies;
+
     Vector2 gravity;
 
     float fixedDt;
@@ -28,7 +28,7 @@ public:
 
     void step()
     {
-        for (rigid_body* body : bodies)
+        for (auto body : bodies)
         {
             if (body->inverse_mass == 0.0f)
                 continue;
@@ -36,7 +36,7 @@ public:
             body->apply_force(gravity * body->mass);
         }
 
-        for (rigid_body* body : bodies)
+        for (auto body : bodies)
         {
             body->integrate(fixedDt);
         }
@@ -47,13 +47,16 @@ public:
         }
     }
 
+private:
+
     void solveConstraints()
     {
-        for (rigid_body* body : bodies)
+        for (auto body : bodies)
         {
             if (body->position.y < 0.0f)
             {
                 float penetration = -body->position.y;
+
                 ConstraintSolver::solvePenetration(
                     *body,
                     Vector2(0.0f, 1.0f),
