@@ -1,20 +1,24 @@
+#include <SFML/Graphics.hpp>
 #include "physicsworld.h"
 #include "f1car.h"
-#include "unittest.h"
 
 int main()
 {
-    UnitTests::runAll();
+    sf::RenderWindow window(
+        sf::VideoMode({800, 600}),
+        "F1 Physics Engine"
+    );
 
-    PhysicsWorld world;
-    F1Car car;
-
-    world.addBody(car.body);
-
-    for (int i = 0; i < 600; ++i)
+    while (window.isOpen())
     {
-        car.drivetrain.setThrottle(0.6f);
-        world.step();
+        while (auto event = window.pollEvent())
+        {
+            if (event->is<sf::Event::Closed>())
+                window.close();
+        }
+
+        window.clear(sf::Color::Blue);
+        window.display();
     }
 
     return 0;
