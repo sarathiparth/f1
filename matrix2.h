@@ -1,6 +1,6 @@
 #pragma once
 #include<cmath>
-#include"vector2.h"
+#include"vector2d.h"
 
 class matrix2{
     public:
